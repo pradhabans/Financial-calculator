@@ -72,12 +72,19 @@ const App: React.FC = () => {
         requiredTotalMonthlyInvestment = requiredFutureValueFromSip / months;
     }
     
+    // For chart
+    const totalMonthlyContribution = inputs.monthlySavings * months;
+    const totalInvestment = inputs.currentSavings + totalMonthlyContribution;
+    const wealthGained = totalProjectedSavings - totalInvestment;
+
     setResult({
       futureCost,
       yearsToGoal: years,
       totalProjectedSavings,
       shortfall,
       requiredTotalMonthlyInvestment: requiredTotalMonthlyInvestment > 0 ? requiredTotalMonthlyInvestment : 0,
+      totalInvestment: totalInvestment,
+      wealthGained: wealthGained > 0 ? wealthGained : 0,
     });
 
   }, [inputs]);

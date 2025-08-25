@@ -18,4 +18,6 @@ export interface CalculationResult {
   totalProjectedSavings: number;
   shortfall: number; // Will be negative if there's a surplus
   requiredTotalMonthlyInvestment: number;
+  totalInvestment: number;
+  wealthGained: number;
 }

@@ -2,6 +2,7 @@
 import React from 'react';
 import type { CalculationResult } from '../types.ts';
 import { formatCurrency } from '../utils/formatters.ts';
+import { InvestmentChart } from './InvestmentChart.tsx';
 
 interface ResultsDisplayProps {
   result: CalculationResult | null;
@@ -74,27 +75,36 @@ export const ResultsDisplay: React.FC<ResultsDisplayProps> = ({ result }) => {
       
       <ProgressBar value={progressPercentage} />
 
-      {isOnTrack ? (
-        <div className="p-4 rounded-lg bg-green-100 dark:bg-green-900/40 border border-green-200 dark:border-green-700">
-            <h3 className="font-semibold text-green-800 dark:text-green-200">Congratulations! You're on track.</h3>
-            <p className="text-sm text-green-700 dark:text-green-300 mt-1">
-                You are projected to have a surplus of {formatCurrency(Math.abs(result.shortfall))}. Keep up the great work!
-            </p>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+        <div className="flex flex-col justify-center">
+            {isOnTrack ? (
+                <div className="p-4 rounded-lg bg-green-100 dark:bg-green-900/40 border border-green-200 dark:border-green-700">
+                    <h3 className="font-semibold text-green-800 dark:text-green-200">Congratulations! You're on track.</h3>
+                    <p className="text-sm text-green-700 dark:text-green-300 mt-1">
+                        You are projected to have a surplus of {formatCurrency(Math.abs(result.shortfall))}. Keep up the great work!
+                    </p>
+                </div>
+            ) : (
+                <div className="p-4 rounded-lg bg-amber-100 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700">
+                    <h3 className="font-semibold text-amber-800 dark:text-amber-200">You have a projected shortfall.</h3>
+                    <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
+                        Your current plan may not be enough. You have a projected deficit of {formatCurrency(result.shortfall)}.
+                    </p>
+                    <div className="mt-4 pt-4 border-t border-amber-300 dark:border-amber-600">
+                        <p className="text-sm font-medium text-gray-800 dark:text-gray-100">
+                            To reach your goal, you need to save a total of <strong>{formatCurrency(result.requiredTotalMonthlyInvestment)}</strong> per month.
+                        </p>
+                    </div>
+                </div>
+            )}
         </div>
-      ) : (
-        <div className="p-4 rounded-lg bg-amber-100 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-700">
-            <h3 className="font-semibold text-amber-800 dark:text-amber-200">You have a projected shortfall.</h3>
-            <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
-                Your current plan may not be enough. You have a projected deficit of {formatCurrency(result.shortfall)}.
-            </p>
-            <div className="mt-4 pt-4 border-t border-amber-300 dark:border-amber-600">
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-100">
-                    To reach your goal, you need to save a total of <strong>{formatCurrency(result.requiredTotalMonthlyInvestment)}</strong> per month.
-                </p>
-            </div>
+        <div className="h-64">
+            <InvestmentChart 
+                totalInvestment={result.totalInvestment}
+                totalReturns={result.wealthGained}
+            />
         </div>
-      )}
-
+      </div>
     </div>
   );
 };
