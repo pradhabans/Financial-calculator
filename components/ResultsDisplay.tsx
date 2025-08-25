@@ -1,6 +1,7 @@
+
 import React from 'react';
-import type { CalculationResult } from '../types';
-import { formatCurrency } from '../utils/formatters';
+import type { CalculationResult } from '../types.ts';
+import { formatCurrency } from '../utils/formatters.ts';
 
 interface ResultsDisplayProps {
   result: CalculationResult | null;

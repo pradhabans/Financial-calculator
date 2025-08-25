@@ -1,4 +1,5 @@
-import type { CalculatorInputs } from './types';
+
+import type { CalculatorInputs } from './types.ts';
 
 export const initialInputs: CalculatorInputs = {
   yourAge: 30,

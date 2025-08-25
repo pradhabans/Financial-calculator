@@ -1,7 +1,8 @@
+
 import React from 'react';
-import type { CalculatorInputs, EducationGoal } from '../types';
-import { InputSlider } from './InputSlider';
-import { CurrencyInput } from './CurrencyInput';
+import type { CalculatorInputs, EducationGoal } from '../types.ts';
+import { InputSlider } from './InputSlider.tsx';
+import { CurrencyInput } from './CurrencyInput.tsx';
 
 interface CalculatorFormProps {
   inputs: CalculatorInputs;

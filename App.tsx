@@ -1,8 +1,9 @@
+
 import React, { useState, useCallback } from 'react';
-import { CalculatorForm } from './components/CalculatorForm';
-import { ResultsDisplay } from './components/ResultsDisplay';
-import type { CalculatorInputs, CalculationResult, EducationGoal } from './types';
-import { initialInputs } from './constants';
+import { CalculatorForm } from './components/CalculatorForm.tsx';
+import { ResultsDisplay } from './components/ResultsDisplay.tsx';
+import type { CalculatorInputs, CalculationResult, EducationGoal } from './types.ts';
+import { initialInputs } from './constants.ts';
 
 const App: React.FC = () => {
   const [inputs, setInputs] = useState<CalculatorInputs>(initialInputs);

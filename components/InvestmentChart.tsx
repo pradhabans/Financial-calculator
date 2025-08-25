@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { formatCurrency } from '../utils/formatters';
+import { formatCurrency } from '../utils/formatters.ts';
 
 interface InvestmentChartProps {
   totalInvestment: number;
