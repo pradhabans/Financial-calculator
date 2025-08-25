@@ -1,0 +1,5 @@
+{
+  "name": "Children Education Planner",
+  "description": "A calculator to help plan for a child's future education costs. It projects the future cost, estimates the future value of your savings, and identifies any potential shortfall to help you stay on track.",
+  "requestFramePermissions": []
+}
